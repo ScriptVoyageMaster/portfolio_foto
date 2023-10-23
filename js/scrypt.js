@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     function loadImagesFromFolder(folderPath) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", folderPath);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                const files = xhr.responseText.split("\n").filter(Boolean).map(fileName => `${folderPath}/${fileName}`);
+        fetch(folderPath)
+            .then(response => response.text())
+            .then(data => {
+                const files = data.split("\n").filter(Boolean).map(fileName => `${folderPath}/${fileName}`);
                 if (files.length > 0) {
                     files.forEach(function(imageSrc) {
                         const column = document.querySelector(`.column:nth-child(${Math.floor(Math.random() * 3) + 1})`);
@@ -15,9 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     message.textContent = "В папці немає фотографій.";
                     document.body.appendChild(message);
                 }
-            }
-        };
-        xhr.send();
+            })
+            .catch(error => console.error('Error:', error));
     }
 
     function createImage(src) {
@@ -30,5 +28,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const gallery = document.querySelector(".gallery");
-    loadImagesFromFolder("css"); // Шлях до вашої папки з фотографіями
+    loadImagesFromFolder("img"); // Шлях до вашої папки з фотографіями
 });
