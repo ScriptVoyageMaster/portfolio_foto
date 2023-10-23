@@ -1,16 +1,15 @@
-.main .row {
+.gallery {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 }
 
-.main .col-lg-6 {
-  flex: 1 1 auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
+.column {
+  width: 500px;
+  margin-right: 20px;
 }
-.img-fluid {
-  display: block;
-  border: 2px solid red;
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 }
