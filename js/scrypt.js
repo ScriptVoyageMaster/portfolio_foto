@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     function loadImagesFromServer() {
-        fetch('photos')
+        fetch('/photos')
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
