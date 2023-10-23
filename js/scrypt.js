@@ -1,5 +1,5 @@
-// Підключаємо зовнішній скрипт jQuery
-const $ = require("jquery");
+// Підключаємо зовнішній скрипт jQuery за допомогою модулярного завантажувача
+import $ from "jquery";
 
 // Отримуємо всі div-контейнери з фото
 const photoContainers = document.querySelectorAll(".col-lg-6");
