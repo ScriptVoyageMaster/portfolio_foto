@@ -30,5 +30,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const gallery = document.querySelector(".gallery");
-    loadImagesFromFolder("img"); // Шлях до вашої папки з фотографіями
+    loadImagesFromFolder("css"); // Шлях до вашої папки з фотографіями
 });
