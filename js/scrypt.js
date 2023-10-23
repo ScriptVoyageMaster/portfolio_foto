@@ -1,15 +1,13 @@
-import $ from "jquery";
-
 // Отримуємо всі div-контейнери з фото
 const photoContainers = document.querySelectorAll(".col-lg-6");
 
 // Обробляємо кожен div-контейнер з фото
 for (const photoContainer of photoContainers) {
   // Отримуємо висоту першого фото в колонці
-  const firstPhotoHeight = photoContainer.querySelector("img").getBoundingClientRect().height;
+  const firstPhotoHeight = getImageHeight(photoContainer.querySelector("img"));
 
   // Отримуємо висоту кожного фото в колонці
-  const photoHeights = photoContainer.querySelectorAll("img").map((img) => img.getBoundingClientRect().height);
+  const photoHeights = photoContainer.querySelectorAll("img").map((img) => getImageHeight(img));
 
   // Розраховуємо ширину кожного фото
   const photoWidth = photoContainer.offsetWidth / photoHeights.length;
@@ -20,4 +18,9 @@ for (const photoContainer of photoContainers) {
     photo.style.top = `${firstPhotoHeight - photoHeight}px`;
     photo.style.left = `${photoWidth * index}px`;
   });
+}
+
+// Отримуємо висоту зображення
+function getImageHeight(img) {
+  return img.getBoundingClientRect().height;
 }
