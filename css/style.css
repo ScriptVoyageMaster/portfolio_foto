@@ -1,0 +1,16 @@
+.main .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.main .col-lg-6 {
+  flex: 1 1 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.img-fluid {
+  display: block;
+  border: 2px solid red;
+}
