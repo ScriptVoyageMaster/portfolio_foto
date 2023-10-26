@@ -1,23 +1,22 @@
-document.addEventListener("DOMContentLoaded", function() {
-    function loadImagesFromServer() {
-        fetch('portfolio_foto/photos')
-            .then(response => response.json())
-            .then(data => {
-                if (data.length > 0) {
-                    data.forEach(function(imageSrc) {
-                        const column = document.querySelector(`.column:nth-child(${Math.floor(Math.random() * 3) + 1})`);
-                        column.appendChild(createImage(imageSrc));
-                    });
-                } else {
-                    const message = document.createElement("p");
-                    message.textContent = "На сервері немає фотографій.";
-                    document.body.appendChild(message);
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        File folder = new File("./imgs"); // Шлях до директорії з файлами
+
+        File[] files = folder.listFiles(); // Отримуємо список файлів
+        List<String> jpgs = new ArrayList<>(); // Створюємо список для файлів з розширенням .jpg
+
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile() && file.getName().endsWith(".jpg")) {
+                    jpgs.add(file.getName());
                 }
-            })
-            .catch(error => console.error('Error:', error));
+            }
+        }
+
+        System.out.println(jpgs.size());
     }
-
-    // Решта коду залишається незмінним
-
-    loadImagesFromServer(); // Замість loadImagesFromFolder("img")
-});
+}
